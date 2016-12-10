@@ -3,8 +3,8 @@
 using namespace std;
 
 
-
-int addWithoutPlus(int num1, int num2) {
+//Uses + in else if statements
+int addWithoutPlus1(int num1, int num2) {
     int carry = 0;
     int result = 0;
     int binCount = 1;
@@ -32,10 +32,20 @@ int addWithoutPlus(int num1, int num2) {
     return result;
 }
 
+//recursive
+int addWithoutPlus2(int num1, int num2) {
+    if (num2 == 0) {
+        return num1;
+    }
+    int carry = (num1&num2) << 1;
+    int diff = num1^num2;
+    return addWithoutPlus2(diff,carry);
+}
+
 //Add two numbers without using '+' symbol
 int main() {
-    int num1 = 1206;
-    int num2 = 4908;
-    int result = addWithoutPlus(num1, num2);
+    int num1 = 5;
+    int num2 = 7;
+    int result = addWithoutPlus2(num1, num2);
     cout << result << endl;
 }
